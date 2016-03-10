@@ -9,130 +9,140 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.nikita.compilationtasks.MainActivity"
     android:background="#e8fbff">
-
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:radius="5dp"
-        android:background="@drawable/el_button"
-        android:weightSum="1"
-        android:id="@+id/namequetion"
-        android:gravity="top"
-        android:clickable="false"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Категория:"
-            android:id="@+id/textView"
-            android:gravity="center"
-            android:textColor="#c3fcff"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="&quot;Математическая логика&quot;"
-            android:id="@+id/textView2"
-            android:layout_gravity="center_horizontal"
-            android:textColor="#c3fcff"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/question"
-        android:layout_below="@+id/namequetion"
-        android:layout_marginTop="5dp"
-        android:id="@+id/text_question"
-        android:weightSum="1"
-        android:layout_weight="1">
-
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:background="#138d98"
-            android:id="@+id/quest_cloud">
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:radius="5dp"
+            android:background="@drawable/el_button"
+            android:weightSum="1"
+            android:id="@+id/namequetion"
+            android:gravity="top"
+            android:clickable="false"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="0">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Категория:"
+                android:id="@+id/textView"
+                android:gravity="center"
+                android:textColor="#c3fcff"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:id="@+id/question"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="15dp"
-                android:text="@string/coplition"
-                android:textColor="#c3fcff" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/answer"
-        android:id="@+id/answer"
-        android:layout_weight="2"
-        android:layout_below="@+id/text_question"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp">
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:layout_weight="1">
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:text="Показать подсказку"
-                android:id="@+id/textView4"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:layout_margin="10dp"
+                android:text="&quot;Математическая логика&quot;"
+                android:id="@+id/textView2"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#c3fcff"
                 android:textStyle="bold" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/question"
+            android:layout_below="@+id/namequetion"
+            android:layout_marginTop="5dp"
+            android:id="@+id/text_question"
+            android:weightSum="1"
+            android:layout_weight="2"
+            android:layout_marginBottom="5dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:background="#138d98"
+                android:id="@+id/quest_cloud">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/question"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/coplition"
+                    android:textColor="#c3fcff" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_below="@+id/answer"
-            android:layout_alignLeft="@+id/answer"
-            android:layout_alignStart="@+id/answer">
+            android:background="@drawable/answer"
+            android:id="@+id/answer"
+            android:layout_weight="0"
+            android:layout_below="@+id/text_question"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Проверить решение"
-                android:id="@+id/textView5"
-                android:gravity="center"
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="Показать подсказку"
+                    android:id="@+id/editText1"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_margin="10dp"
+                    android:textStyle="bold"
+                    android:textColor="#c3fcff" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_margin="10dp"
-                android:textStyle="bold" />
+                android:layout_below="@+id/answer"
+                android:layout_alignLeft="@+id/answer"
+                android:layout_alignStart="@+id/answer">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Проверить решение"
+                    android:id="@+id/editText2"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_margin="10dp"
+                    android:textStyle="bold"
+                    android:textColor="#c3fcff" />
+            </LinearLayout>
+
         </LinearLayout>
 
-    </LinearLayout>
+</LinearLayout>
+
 
 </RelativeLayout>
