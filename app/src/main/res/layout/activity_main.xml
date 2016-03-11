@@ -17,7 +17,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:padding="5dp"
             android:radius="5dp"
             android:background="@drawable/el_button"
@@ -28,24 +28,26 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_weight="0">
+            android:layout_weight="4">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Категория:"
-                android:id="@+id/textView"
+                android:id="@+id/category"
                 android:gravity="center"
                 android:textColor="#c3fcff"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="2dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="&quot;Математическая логика&quot;"
-                android:id="@+id/textView2"
+                android:id="@+id/precategory"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#c3fcff"
                 android:textStyle="bold" />
@@ -61,38 +63,49 @@
             android:layout_marginTop="5dp"
             android:id="@+id/text_question"
             android:weightSum="1"
-            android:layout_weight="2"
+            android:layout_weight="1.7"
             android:layout_marginBottom="5dp">
+
 
             <LinearLayout
                 android:orientation="vertical"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
                 android:background="#138d98"
                 android:id="@+id/quest_cloud">
-
+                <ScrollView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/scrollView"
+                    android:layout_weight="0">
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/question"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginTop="15dp"
                     android:text="@string/coplition"
                     android:textColor="#c3fcff" />
+                </ScrollView>
             </LinearLayout>
+
+
+
+
+
+
 
         </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@drawable/answer"
             android:id="@+id/answer"
-            android:layout_weight="0"
+            android:layout_weight="3.5"
             android:layout_below="@+id/text_question"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true">
@@ -101,14 +114,18 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="top"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:nestedScrollingEnabled="false"
+                android:background="@drawable/buttonpressed"
+                android:clickable="true"
+                android:onClick="clickbutton"
+                android:id="@+id/clickbutton">
 
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:text="Показать подсказку"
-                    android:id="@+id/editText1"
+                    android:id="@+id/FirstButtonAns"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:gravity="center"
                     android:layout_weight="1"
@@ -132,7 +149,7 @@
                     android:layout_height="fill_parent"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Проверить решение"
-                    android:id="@+id/editText2"
+                    android:id="@+id/SecondButtonAns"
                     android:gravity="center"
                     android:layout_weight="1"
                     android:layout_margin="10dp"
