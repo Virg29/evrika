@@ -17,7 +17,7 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="fill_parent"
             android:padding="5dp"
             android:radius="5dp"
             android:background="@drawable/el_button"
@@ -40,7 +40,9 @@
                 android:textColor="#c3fcff"
                 android:textStyle="bold"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="2dp" />
+                android:layout_marginTop="2dp"
+                android:textSize="23dp"
+                android:textIsSelectable="false" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -50,7 +52,9 @@
                 android:id="@+id/precategory"
                 android:layout_gravity="center_horizontal"
                 android:textColor="#c3fcff"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textSize="23dp"
+                android:textIsSelectable="false" />
 
         </LinearLayout>
 
@@ -87,7 +91,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:text="@string/coplition"
-                    android:textColor="#c3fcff" />
+                    android:textColor="#c3fcff"
+                    android:textSize="17dp" />
                 </ScrollView>
             </LinearLayout>
 
@@ -116,10 +121,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:nestedScrollingEnabled="false"
-                android:background="@drawable/buttonpressed"
+                android:background="@drawable/button"
                 android:clickable="true"
-                android:onClick="clickbutton"
-                android:id="@+id/clickbutton">
+                android:id="@+id/clickbutton"
+                android:longClickable="false">
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -131,7 +136,9 @@
                     android:layout_weight="1"
                     android:layout_margin="10dp"
                     android:textStyle="bold"
-                    android:textColor="#c3fcff" />
+                    android:textColor="#c3fcff"
+                    android:textSize="23dp"
+                    android:textIsSelectable="false" />
 
             </LinearLayout>
 
@@ -154,7 +161,9 @@
                     android:layout_weight="1"
                     android:layout_margin="10dp"
                     android:textStyle="bold"
-                    android:textColor="#c3fcff" />
+                    android:textColor="#c3fcff"
+                    android:textSize="23dp"
+                    android:textIsSelectable="false" />
             </LinearLayout>
 
         </LinearLayout>

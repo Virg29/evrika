@@ -1,12 +1,15 @@
 package com.example.nikita.compilationtasks;
 
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,11 +32,29 @@ public class MainActivity extends AppCompatActivity {
         textView4.setTypeface(Typeface1);
         TextView textView5 = (TextView)findViewById(R.id.question);
         textView5.setTypeface(Typeface2);
-        // Изменение цвета/Или другие действия по нажатию кнопки
 
+
+
+
+        // Изменение цвета/Или другие действия по нажатию кнопки.
+        // Тут вообще страшные вещи творятся, я сам не могу прочитать
+        LinearLayout firstbutton = (LinearLayout)findViewById(R.id.clickbutton);
+        firstbutton.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                LinearLayout firstbutton = (LinearLayout)findViewById(R.id.clickbutton);
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        firstbutton.setBackgroundResource(R.drawable.buttonpressed);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        firstbutton.setBackgroundResource(R.drawable.button);
+                        break;
+                }
+                return false;
+            }
+        });
+
+    };
     }
-  //  LinearLayout myView = (LinearLayout)findViewById(R.id.clickbutton);
-   // public void clickbutton(View v) {
-   //     myView.setBackgroundResource(R.drawable.buttonpressed);
-    //}
-}
+
