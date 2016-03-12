@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         // Задача их для нужных элементов
         TextView textView = (TextView)findViewById(R.id.FirstButtonAns);
         textView.setTypeface(Typeface1);
-        TextView textView2 = (TextView)findViewById(R.id.SecondButtonAns);
+        TextView textView2 = (TextView)findViewById(R.id.FirstButtonAns);
         textView2.setTypeface(Typeface1);
         TextView textView3 = (TextView)findViewById(R.id.category);
         textView3.setTypeface(Typeface1);
@@ -38,7 +38,11 @@ public class MainActivity extends AppCompatActivity {
 
         // Изменение цвета/Или другие действия по нажатию кнопки.
         // Тут вообще страшные вещи творятся, я сам не могу прочитать
+        //объявление кнопок
         LinearLayout firstbutton = (LinearLayout)findViewById(R.id.clickbutton);
+        LinearLayout secondbutton = (LinearLayout)findViewById(R.id.secondbutton);
+
+        //первый листнер
         firstbutton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -55,6 +59,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //второй листнер
+        secondbutton.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                LinearLayout secondbutton = (LinearLayout)findViewById(R.id.secondbutton);
+                switch(event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        secondbutton.setBackgroundResource(R.drawable.buttonpressed);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        secondbutton.setBackgroundResource(R.drawable.button);
+                        break;
+                }
+                return false;
+            }
+        });
     };
     }
 

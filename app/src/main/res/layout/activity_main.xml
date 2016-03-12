@@ -149,7 +149,8 @@
                 android:layout_weight="1"
                 android:layout_below="@+id/answer"
                 android:layout_alignLeft="@+id/answer"
-                android:layout_alignStart="@+id/answer">
+                android:layout_alignStart="@+id/answer"
+                android:id="@+id/secondbutton">
 
                 <TextView
                     android:layout_width="fill_parent"
