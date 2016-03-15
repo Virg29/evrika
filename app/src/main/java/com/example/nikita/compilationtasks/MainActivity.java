@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                     secondbutton.setBackgroundResource(R.drawable.button);
                 }
                 else {
-                    secondbutton.setBackgroundResource(R.drawable.buttonpressed);
+                    secondbutton.setBackgroundResource(R.drawable.buttonpressed2);
                 }
                 return false;
             };
