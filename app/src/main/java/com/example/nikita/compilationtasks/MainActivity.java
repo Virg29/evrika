@@ -1,7 +1,8 @@
-package com.example.nikita.compilationtasks;
+﻿package com.example.nikita.compilationtasks;
 
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         // Задача их для нужных элементов
         TextView textView = (TextView)findViewById(R.id.FirstButtonAns);
         textView.setTypeface(Typeface1);
-        TextView textView2 = (TextView)findViewById(R.id.FirstButtonAns);
+        TextView textView2 = (TextView)findViewById(R.id.SecondButtonAns);
         textView2.setTypeface(Typeface1);
         TextView textView3 = (TextView)findViewById(R.id.category);
         textView3.setTypeface(Typeface1);
@@ -33,48 +35,40 @@ public class MainActivity extends AppCompatActivity {
         TextView textView5 = (TextView)findViewById(R.id.question);
         textView5.setTypeface(Typeface2);
 
-
-
-
-        // Изменение цвета/Или другие действия по нажатию кнопки.
-        // Тут вообще страшные вещи творятся, я сам не могу прочитать
-        //объявление кнопок
+        // Изменение цвета/Или другие действия по нажатию кнопки
         LinearLayout firstbutton = (LinearLayout)findViewById(R.id.clickbutton);
-        LinearLayout secondbutton = (LinearLayout)findViewById(R.id.secondbutton);
-
-        //первый листнер
-        firstbutton.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                LinearLayout firstbutton = (LinearLayout)findViewById(R.id.clickbutton);
-                switch(event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        firstbutton.setBackgroundResource(R.drawable.buttonpressed);
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        firstbutton.setBackgroundResource(R.drawable.button);
-                        break;
-                }
-                return false;
-            }
-        });
-
-        //второй листнер
+        LinearLayout secondbutton = (LinearLayout)findViewById(R.id.clickbutton2);
+        // Примечание: я разобрался как сделать то же самое на иксмл, сократив кол-во букв до 10 штук,
+        // но пожалуй оставлю это тут, ведь код выглядит круто
         secondbutton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                LinearLayout secondbutton = (LinearLayout)findViewById(R.id.secondbutton);
-                switch(event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        secondbutton.setBackgroundResource(R.drawable.buttonpressed);
-                        break;
-                    case MotionEvent.ACTION_UP:
-                        secondbutton.setBackgroundResource(R.drawable.button);
-                        break;
+                LinearLayout secondbutton = (LinearLayout)findViewById(R.id.clickbutton2);
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    secondbutton.setBackgroundResource(R.drawable.button);
+                }
+                else {
+                    secondbutton.setBackgroundResource(R.drawable.buttonpressed2);
+                }
+                return false;
+            };
+        });
+
+        firstbutton.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                LinearLayout firstbutton = (LinearLayout) findViewById(R.id.clickbutton);
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    firstbutton.setBackgroundResource(R.drawable.buttonpressed);
+                } else {
+                    firstbutton.setBackgroundResource(R.drawable.answer);
                 }
                 return false;
             }
+
+            ;
         });
-    };
+        };
     }
+
 
