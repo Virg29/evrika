@@ -9,11 +9,17 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.view.MotionEvent;
-/**
- * Created by nikita on 13.03.16.
- */
+import android.widget.Toast;
+
+
 public class First_activity extends Activity {
+
+    boolean select = false;
+    int type;
+
     @Override
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_activity);
@@ -30,6 +36,7 @@ public class First_activity extends Activity {
         LinearLayout buttonlvl2 = (LinearLayout) findViewById(R.id.lvl2);
         LinearLayout buttonlvl3 = (LinearLayout) findViewById(R.id.lvl3);
         LinearLayout buttonlvl4 = (LinearLayout) findViewById(R.id.lvl4);
+        LinearLayout submitbutton = (LinearLayout) findViewById(R.id.submitbutton);
 
 
         //слушатель прикосновения для "легко"
@@ -80,9 +87,29 @@ public class First_activity extends Activity {
             }
         });
 
+        //слушатель для "подтвердить"
+
+        submitbutton.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (select == true){
+                    Intent intent = new Intent(First_activity.this,MainActivity.class);
+                    intent.putExtra("type", type);
+                    startActivity(intent);
+                }
+                else{
+                    Toast toast2 = Toast.makeText(First_activity.this, "Выберите категорию", Toast.LENGTH_SHORT);
+                    toast2.show();
+                }
+                return false;
+
+            }
+        });
+
     }
     public void color(Integer per){
         //Объявление кнопок
+        select = true;
         LinearLayout buttonlvl1 = (LinearLayout) findViewById(R.id.lvl1);
         LinearLayout buttonlvl2 = (LinearLayout) findViewById(R.id.lvl2);
         LinearLayout buttonlvl3 = (LinearLayout) findViewById(R.id.lvl3);
@@ -95,15 +122,19 @@ public class First_activity extends Activity {
         switch (per){
             case(1):
                 buttonlvl1.setBackgroundResource(R.drawable.buttonpressed);
+                type = 1;
                 break;
             case(2):
                 buttonlvl2.setBackgroundResource(R.drawable.buttonpressed);
+                type = 2;
                 break;
             case(3):
                 buttonlvl3.setBackgroundResource(R.drawable.buttonpressed);
+                type = 3;
                 break;
             case(4):
                 buttonlvl4.setBackgroundResource(R.drawable.buttonpressed);
+                type = 4;
                 break;
         }
 
