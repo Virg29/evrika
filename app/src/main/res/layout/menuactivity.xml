@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#e8fbff">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="false"
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_alignParentEnd="false"
+        android:layout_margin="15dp"
+        android:id="@+id/linearLayout">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:background="@drawable/category">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignBottom="@+id/linearLayout"
+                android:layout_centerHorizontal="true"
+                android:layout_weight="6"
+                android:background="@drawable/titlebut">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Выберите сложность"
+                    android:id="@+id/cate4"
+                    android:gravity="center"
+                    android:textSize="35dp"
+                    android:textColor="#c3fcff" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp">
+
+                <ScrollView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/scrollView2"
+                    android:background="@drawable/scrollview2">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/category_set"
+                                android:layout_weight="1"
+                                android:id="@+id/lvl1">
+
+                                <TextView
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:text="Низкая"
+                                    android:id="@+id/cate0"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginTop="10dp"
+                                    android:textSize="35dp"
+                                    android:layout_weight="5"
+                                    android:gravity="center_vertical|center_horizontal"
+                                    android:textColor="#c3fcff" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/category_set"
+                                android:layout_weight="1"
+                                android:id="@+id/lvl2">
+
+                                <TextView
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:text="Средняя"
+                                    android:id="@+id/cate1"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginTop="10dp"
+                                    android:textSize="35dp"
+                                    android:layout_weight="5"
+                                    android:gravity="center_vertical|center_horizontal"
+                                    android:textColor="#c3fcff" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/category_set"
+                                android:layout_weight="1"
+                                android:id="@+id/lvl3">
+
+                                <TextView
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:text="Выше среднего"
+                                    android:id="@+id/cate2"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginTop="10dp"
+                                    android:textSize="35dp"
+                                    android:layout_weight="5"
+                                    android:gravity="center_vertical|center_horizontal"
+                                    android:textColor="#c3fcff" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/category_set"
+                                android:layout_weight="1"
+                                android:id="@+id/lvl4">
+
+                                <TextView
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:text="Сложная"
+                                    android:id="@+id/cate3"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginTop="10dp"
+                                    android:textSize="35dp"
+                                    android:layout_weight="5"
+                                    android:gravity="center_vertical|center_horizontal"
+                                    android:textColor="#c3fcff" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </ScrollView>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="6"
+            android:background="@drawable/ans_but2"
+            android:id="@+id/submitbutton"
+            android:onClick="OnClick">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Подтвердить"
+                android:id="@+id/submit"
+                android:textColor="#c3fcff"
+                android:textSize="40dp"
+                android:gravity="center" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
