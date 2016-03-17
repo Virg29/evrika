@@ -6,6 +6,8 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.view.MotionEvent;
@@ -94,7 +96,7 @@ public class First_activity extends Activity {
             public boolean onTouch(View v, MotionEvent event) {
                 if (select == true){
                     Intent intent = new Intent(First_activity.this,MainActivity.class);
-                    intent.putExtra("type", type);
+                    intent.putExtra("type",type);
                     startActivity(intent);
                 }
                 else{

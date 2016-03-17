@@ -6,10 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+
 public class MainActivity extends AppCompatActivity {
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,13 +33,52 @@ public class MainActivity extends AppCompatActivity {
         TextView textView5 = (TextView)findViewById(R.id.question);
         textView5.setTypeface(Typeface2);
         // Изменение цвета/Или другие действия по нажатию кнопки
+
+        //Инициализация переменных
+        //кнопки
         LinearLayout firstbutton = (LinearLayout)findViewById(R.id.clickbutton);
         LinearLayout secondbutton = (LinearLayout)findViewById(R.id.clickbutton2);
+        //это кароче я хз как назыается
+        Intent intent = getIntent();
+        int type = intent.getIntExtra("type",0);
         // Примечание: я разобрался как сделать то же самое на иксмл, сократив кол-во букв до 10 штук,
         // но пожалуй оставлю это тут, ведь код выглядит круто
 
 
+        if (type == 1){
+            textView5.setText(R.string.coplition);
+        }
+        else if (type == 2) {
+            textView5.setText(R.string.coplition2);
+        }
+        else{
+            textView5.setText("СЛОЖНААААААААААААААААААААААААААААААААААААААААААААААААААА");
 
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //слушатели
         secondbutton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
