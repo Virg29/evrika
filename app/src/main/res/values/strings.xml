@@ -5,22 +5,39 @@
     <string name="lvl1_coplition3">На велосипедах каталось 14 детей. Мальчишек было больше, чем девочек. Сколько могло быть девочек и сколько мальчиков</string>
     <string name="lvl1_coplition4">В магазине было 75 пакетов сахара. Продали 40. На сколько больше пакетов продали,  чем осталось?</string>
     <string name="lvl1_coplition5">В классе 17 мальчиков и 15 девочек.  9 девочек вышли из класса. Сколько мальчиков  осталось?</string>
-
+        <string name="otvet1_1">ответ1</string>
+        <string name="otvet1_2">ответ2</string>
+        <string name="otvet1_3">ответ3</string>
+        <string name="otvet1_4">ответ4</string>
+        <string name="otvet1_5">ответ5</string>
     <string name="lvl2_coplition1">нада падумать</string>
-    <string name="lvl2_coplition2"></string>
-    <string name="lvl2_coplition3"></string>
-    <string name="lvl2_coplition4"></string>
-    <string name="lvl2_coplition5"></string>
-
+    <string name="lvl2_coplition2">ф</string>
+    <string name="lvl2_coplition3">ф</string>
+    <string name="lvl2_coplition4">ф</string>
+    <string name="lvl2_coplition5">ф</string>
+        <string name="otvet2_1">ответ6</string>
+        <string name="otvet2_2">ответ7</string>
+        <string name="otvet2_3">ответ8</string>
+        <string name="otvet2_4">ответ9</string>
+        <string name="otvet2_5">ответ10</string>
     <string name="lvl3_coplition1">что ты такое</string>
-    <string name="lvl3_coplition2"></string>
-    <string name="lvl3_coplition3"></string>
-    <string name="lvl3_coplition4"></string>
-    <string name="lvl3_coplition5"></string>
-
+    <string name="lvl3_coplition2">ф</string>
+    <string name="lvl3_coplition3">ф</string>
+    <string name="lvl3_coplition4">ф</string>
+    <string name="lvl3_coplition5">ф</string>
+        <string name="otvet3_1">ответ11</string>
+        <string name="otvet3_2">ответ12</string>
+        <string name="otvet3_3">ответ13</string>
+        <string name="otvet3_4">ответ14</string>
+        <string name="otvet3_5">ответ15</string>
     <string name="lvl4_coplition1">СЛОЖНАААААААААААААААААААААААААААААААААААААААААА</string>
-    <string name="lvl4_coplition2"></string>
-    <string name="lvl4_coplition3"></string>
-    <string name="lvl4_coplition4"></string>
-    <string name="lvl4_coplition5"></string>
+    <string name="lvl4_coplition2">ф</string>
+    <string name="lvl4_coplition3">ф</string>
+    <string name="lvl4_coplition4">ф</string>
+    <string name="lvl4_coplition5">ф</string>
+        <string name="otvet4_1">ответ16</string>
+        <string name="otvet4_2">ответ17</string>
+        <string name="otvet4_3">ответ18</string>
+        <string name="otvet4_4">ответ19</string>
+        <string name="otvet4_5">ответ20</string>
 </resources>
