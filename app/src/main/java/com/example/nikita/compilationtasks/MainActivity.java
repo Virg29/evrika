@@ -1,15 +1,19 @@
 package com.example.nikita.compilationtasks;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -18,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         // Определение нужных шрифтов
         Typeface Typeface1 = Typeface.createFromAsset(getAssets(), "fonts/Bebas.ttf");
         Typeface Typeface2 = Typeface.createFromAsset(getAssets(), "fonts/PTSansRegular.ttf");
@@ -41,42 +46,39 @@ public class MainActivity extends AppCompatActivity {
         //это кароче я хз как назыается
         Intent intent = getIntent();
         int type = intent.getIntExtra("type",0);
-        // Примечание: я разобрался как сделать то же самое на иксмл, сократив кол-во букв до 10 штук,
-        // но пожалуй оставлю это тут, ведь код выглядит круто
+        int page = 1;
 
 
         if (type == 1){
-            textView5.setText(R.string.coplition);
+        //запуск некой функции которая будет распозновать жест и создавать новый лейаут уже с другим текстом посмотришь его в strings.xml там все разбито и потои разберемся
+            textView5.setText(R.string.lvl1_coplition1);
+
+
         }
         else if (type == 2) {
-            textView5.setText(R.string.coplition2);
+            textView5.setText(R.string.lvl2_coplition1);
+
+
+
+
+
         }
-        else{
-            textView5.setText("СЛОЖНААААААААААААААААААААААААААААААААААААААААААААААААААА");
+        else if (type == 3) {
+            textView5.setText(R.string.lvl3_coplition1);
+
+
+
+
+
 
         }
+        else if (type == 4){
+            textView5.setText(R.string.lvl4_coplition1);
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        }
 
         //слушатели
         secondbutton.setOnTouchListener(new View.OnTouchListener() {
@@ -86,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 if (event.getAction() == MotionEvent.ACTION_UP) {
                     secondbutton.setBackgroundResource(R.drawable.button);
                 }
-                else {
+                else  {
                     secondbutton.setBackgroundResource(R.drawable.buttonpressed2);
                 }
                 return false;
@@ -101,6 +103,17 @@ public class MainActivity extends AppCompatActivity {
                     firstbutton.setBackgroundResource(R.drawable.buttonpressed);
                 } else {
                     firstbutton.setBackgroundResource(R.drawable.answer);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setTitle("Подсказка!");
+                    builder.setCancelable(false);
+                    builder.setMessage(R.string.lvl1_coplition1);
+                    builder.setNegativeButton("чта,как блядь?!", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog alert = builder.create();
+                    alert.show();
                 }
                 return false;
             }
@@ -108,6 +121,12 @@ public class MainActivity extends AppCompatActivity {
             ;
         });
         };
+
+
+
+
+
+
     }
 
 

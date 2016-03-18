@@ -1,5 +1,26 @@
 <resources>
     <string name="app_name"></string>
-    <string name="coplition">Арена цирка освещается n различными прожекторами.Каждый прожектор освещает некоторую выпуклую фигуру. Известно, что если выключить один произвольный прожектор, то арена будет по-прежнему полностью освещена, а если выключить произвольные 2 прожектора, то арена полностью освещена не будет. При каких значениях n это возможно? </string>
-    <string name="coplition2">Чему равно а+б если 1 = 1 и б = 1^2</string>
+    <string name="lvl1_coplition1">легко</string>
+    <string name="lvl1_coplition2"></string>
+    <string name="lvl1_coplition3"></string>
+    <string name="lvl1_coplition4"></string>
+    <string name="lvl1_coplition5"></string>
+
+    <string name="lvl2_coplition1">нада падумать</string>
+    <string name="lvl2_coplition2"></string>
+    <string name="lvl2_coplition3"></string>
+    <string name="lvl2_coplition4"></string>
+    <string name="lvl2_coplition5"></string>
+
+    <string name="lvl3_coplition1">что ты такое</string>
+    <string name="lvl3_coplition2"></string>
+    <string name="lvl3_coplition3"></string>
+    <string name="lvl3_coplition4"></string>
+    <string name="lvl3_coplition5"></string>
+
+    <string name="lvl4_coplition1">СЛОЖНАААААААААААААААААААААААААААААААААААААААААА</string>
+    <string name="lvl4_coplition2"></string>
+    <string name="lvl4_coplition3"></string>
+    <string name="lvl4_coplition4"></string>
+    <string name="lvl4_coplition5"></string>
 </resources>
