@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name"></string>
-    <string name="lvl1_coplition1">легко</string>
-    <string name="lvl1_coplition2"></string>
-    <string name="lvl1_coplition3"></string>
-    <string name="lvl1_coplition4"></string>
-    <string name="lvl1_coplition5"></string>
+    <string name="lvl1_coplition1">Увеличится или уменьшится число 27, если в нем поменять цифры местами?</string>
+    <string name="lvl1_coplition2">Богдан, Руслан, Максим – братья. Богдан не старше, а Руслан не младше Максима. Кто из них самый старший</string>
+    <string name="lvl1_coplition3">На велосипедах каталось 14 детей. Мальчишек было больше, чем девочек. Сколько могло быть девочек и сколько мальчиков</string>
+    <string name="lvl1_coplition4">В магазине было 75 пакетов сахара. Продали 40. На сколько больше пакетов продали,  чем осталось?</string>
+    <string name="lvl1_coplition5">В классе 17 мальчиков и 15 девочек.  9 девочек вышли из класса. Сколько мальчиков  осталось?</string>
 
     <string name="lvl2_coplition1">нада падумать</string>
     <string name="lvl2_coplition2"></string>
