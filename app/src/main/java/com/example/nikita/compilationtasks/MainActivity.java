@@ -1,62 +1,75 @@
 package com.example.nikita.compilationtasks;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends Activity{
     //это потомучто мы любим жарить дерьмо
-    int page = 1;//собственно объяснять не буду
+    public static int page = 1;//собственно объяснять не буду
     //это кароче я хз как назыается,но мы попрежнему любим жарить говно!!1жькдрзхк
 
     //продолжаем тему "база данных для слабаков"
 
-   //говно необходимо прожаривать со всех сторон а nullPointerExpection подвигает людей к этому
+    //говно необходимо прожаривать со всех сторон а nullPointerExpection подвигает людей к этому
 
-    int[] bcate = new int[]{R.string.otvet1_1,R.string.otvet1_2,R.string.otvet1_3,R.string.otvet1_4,R.string.otvet1_5,R.string.otvet2_1,R.string.otvet2_2,R.string.otvet2_3,R.string.otvet2_4,R.string.otvet2_5,R.string.otvet3_1,R.string.otvet3_2,R.string.otvet3_3,R.string.otvet3_4,R.string.otvet3_5,R.string.otvet4_1,R.string.otvet4_2,R.string.otvet4_3,R.string.otvet4_4,R.string.otvet4_5};
+    int[] bcate = new int[]{R.string.otvet1_1, R.string.otvet1_2, R.string.otvet1_3, R.string.otvet1_4, R.string.otvet1_5, R.string.otvet2_1, R.string.otvet2_2, R.string.otvet2_3, R.string.otvet2_4, R.string.otvet2_5, R.string.otvet3_1, R.string.otvet3_2, R.string.otvet3_3, R.string.otvet3_4, R.string.otvet3_5, R.string.otvet4_1, R.string.otvet4_2, R.string.otvet4_3, R.string.otvet4_4, R.string.otvet4_5};
     int otvet = bcate[0];
-
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ViewGroup main = (ViewGroup)findViewById(R.id.scrollView);
+        main.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this) {
+            TextView textView5 = (TextView)findViewById(R.id.question);
+            public void onSwipeRight() {
+                if (page < 5){
+                page++;
+                show();}
+            }
+            public void onSwipeLeft() {
+                if (page > 1) {
+                page--;
+                show();}
+            }
+
+        });
         // Определение нужных шрифтов
         Typeface Bebas = Typeface.createFromAsset(getAssets(), "fonts/Bebas.ttf");
-        Typeface PTSans= Typeface.createFromAsset(getAssets(), "fonts/PTSansRegular.ttf");
+        Typeface PTSans = Typeface.createFromAsset(getAssets(), "fonts/PTSansRegular.ttf");
         // Задача их для нужных элементов
         Integer[] BebasMass = new Integer[]{R.id.precategory, R.id.category, R.id.SecondButtonAns, R.id.FirstButtonAns};
         Integer[] PTSansMass = new Integer[]{R.id.question};
-        for (Integer i = 0; i<BebasMass.length; i++){
-            TextView textView = (TextView)findViewById(BebasMass[i]);
+        for (Integer i = 0; i < BebasMass.length; i++) {
+            TextView textView = (TextView) findViewById(BebasMass[i]);
             textView.setTypeface(Bebas);
         }
 
-        for (Integer i = 0; i<PTSansMass.length; i++){
-            TextView textView = (TextView)findViewById(PTSansMass[i]);
+        for (Integer i = 0; i < PTSansMass.length; i++) {
+            TextView textView = (TextView) findViewById(PTSansMass[i]);
             textView.setTypeface(PTSans);
         }
         // Изменение цвета/Или другие действия по нажатию кнопки
         //Инициализация переменных
         //кнопки
-        LinearLayout firstbutton = (LinearLayout)findViewById(R.id.clickbutton);
-        LinearLayout secondbutton = (LinearLayout)findViewById(R.id.clickbutton2);
+        LinearLayout firstbutton = (LinearLayout) findViewById(R.id.clickbutton);
+        LinearLayout secondbutton = (LinearLayout) findViewById(R.id.clickbutton2);
         //потом убрать
-        LinearLayout thirstbutton = (LinearLayout)findViewById(R.id.namequetion);
+        LinearLayout thirstbutton = (LinearLayout) findViewById(R.id.namequetion);
         //вот что сверху
         Intent intent = getIntent();
         int type = intent.getIntExtra("type", 0);
@@ -65,19 +78,16 @@ public class MainActivity extends AppCompatActivity {
         secondbutton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                LinearLayout secondbutton = (LinearLayout)findViewById(R.id.clickbutton2);
+                LinearLayout secondbutton = (LinearLayout) findViewById(R.id.clickbutton2);
                 if (event.getAction() == MotionEvent.ACTION_UP) {
                     secondbutton.setBackgroundResource(R.drawable.button);
-                }
-                else  {
+                } else {
                     secondbutton.setBackgroundResource(R.drawable.buttonpressed2);
-                    if (page < 5){
-                        page++;                                                                                             //ЭТО ДЛЯ ДЕМОНСТРАЦИИ
-                    }
-                    show();
                 }
                 return false;
-            };
+            }
+
+            ;
         });
         firstbutton.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -92,36 +102,17 @@ public class MainActivity extends AppCompatActivity {
                     builder.setCancelable(false);
                     builder.setMessage(otvet);
                     builder.setNegativeButton("Ок!", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                }
-                            });
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
                     AlertDialog alert = builder.create();
                     alert.show();
                 }
                 return false;
             }
-
-            ;
         });
-        thirstbutton.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                LinearLayout secondbutton = (LinearLayout)findViewById(R.id.namequetion);
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    secondbutton.setBackgroundResource(R.drawable.button);
-                }
-                else if(event.getAction() == MotionEvent.ACTION_DOWN)  {
-                    secondbutton.setBackgroundResource(R.drawable.buttonpressed2);
-                    if (page > 1){
-                        page--;                                                                                             //ЭТО ДЛЯ ДЕМОНСТРАЦИИ
-                    }
-                    show();
-                }
-                return false;
-            };
-        });
-    };
+    }
     public void show(){
 
         Intent intent = getIntent();
@@ -197,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case(5):
                         textView5.setText(R.string.lvl3_coplition5);
-                        otvet = bcate[15];
+                        otvet = bcate[14];
                         break;
                 }
 
@@ -207,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (page){
                     case(1):
                         textView5.setText(R.string.lvl4_coplition1);
-                        otvet = bcate[16];
+                        otvet = bcate[15];
                         break;
                     case(2):
                         textView5.setText(R.string.lvl4_coplition2);
@@ -231,6 +222,15 @@ public class MainActivity extends AppCompatActivity {
         }
         //конец
     }
-}
+    private GestureDetector mGesture;
+    public boolean onScroll(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY){
+        final int SWIPE_MIN_DISTANCE = 120;
+        final int SWIPE_MAX_OFF_PATH = 250;
+        final int SWIPE_THRESHOLD_VELOCITY = 200;
+        return true;
+    };
+};
+
+
 
 
