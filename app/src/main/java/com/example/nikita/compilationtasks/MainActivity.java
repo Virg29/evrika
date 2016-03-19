@@ -35,48 +35,32 @@ public class MainActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         // Определение нужных шрифтов
-        Typeface Typeface1 = Typeface.createFromAsset(getAssets(), "fonts/Bebas.ttf");
-        Typeface Typeface2 = Typeface.createFromAsset(getAssets(), "fonts/PTSansRegular.ttf");
+        Typeface Bebas = Typeface.createFromAsset(getAssets(), "fonts/Bebas.ttf");
+        Typeface PTSans= Typeface.createFromAsset(getAssets(), "fonts/PTSansRegular.ttf");
         // Задача их для нужных элементов
-        TextView textView = (TextView)findViewById(R.id.FirstButtonAns);
-        textView.setTypeface(Typeface1);
-        TextView textView2 = (TextView)findViewById(R.id.SecondButtonAns);
-        textView2.setTypeface(Typeface1);
-        TextView textView3 = (TextView)findViewById(R.id.category);
-        textView3.setTypeface(Typeface1);
-        TextView textView4 = (TextView)findViewById(R.id.precategory);
-        textView4.setTypeface(Typeface1);
-        TextView textView5 = (TextView)findViewById(R.id.question);
-        textView5.setTypeface(Typeface2);
-        // Изменение цвета/Или другие действия по нажатию кнопки
+        Integer[] BebasMass = new Integer[]{R.id.precategory, R.id.category, R.id.SecondButtonAns, R.id.FirstButtonAns};
+        Integer[] PTSansMass = new Integer[]{R.id.question};
+        for (Integer i = 0; i<BebasMass.length; i++){
+            TextView textView = (TextView)findViewById(BebasMass[i]);
+            textView.setTypeface(Bebas);
+        }
 
+        for (Integer i = 0; i<PTSansMass.length; i++){
+            TextView textView = (TextView)findViewById(PTSansMass[i]);
+            textView.setTypeface(PTSans);
+        }
+        // Изменение цвета/Или другие действия по нажатию кнопки
         //Инициализация переменных
         //кнопки
         LinearLayout firstbutton = (LinearLayout)findViewById(R.id.clickbutton);
         LinearLayout secondbutton = (LinearLayout)findViewById(R.id.clickbutton2);
-
-
         //потом убрать
         LinearLayout thirstbutton = (LinearLayout)findViewById(R.id.namequetion);
         //вот что сверху
-
-
-
         Intent intent = getIntent();
         int type = intent.getIntExtra("type", 0);
-
-
         show();
-
-
-
-
-
-
-
-
         //слушатели
         secondbutton.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -87,25 +71,14 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else  {
                     secondbutton.setBackgroundResource(R.drawable.buttonpressed2);
-
-
-
                     if (page < 5){
                         page++;                                                                                             //ЭТО ДЛЯ ДЕМОНСТРАЦИИ
                     }
                     show();
-
-
                 }
                 return false;
             };
         });
-
-
-
-
-
-
         firstbutton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -131,18 +104,6 @@ public class MainActivity extends AppCompatActivity {
 
             ;
         });
-
-
-
-
-
-        //НЕЗАБЫТЬ УБРАТЬ ИЛИ ОСТАВИТЬ
-//НЕЗАБЫТЬ УБРАТЬ ИЛИ ОСТАВИТЬ
-//НЕЗАБЫТЬ УБРАТЬ ИЛИ ОСТАВИТЬ
-//НЕЗАБЫТЬ УБРАТЬ ИЛИ ОСТАВИТЬ
-
-
-
         thirstbutton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -152,33 +113,15 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(event.getAction() == MotionEvent.ACTION_DOWN)  {
                     secondbutton.setBackgroundResource(R.drawable.buttonpressed2);
-
-
-
                     if (page > 1){
                         page--;                                                                                             //ЭТО ДЛЯ ДЕМОНСТРАЦИИ
                     }
                     show();
-
-
                 }
-
                 return false;
             };
         });
-
-
-
-
-
-
-
-
-
     };
-
-
-
     public void show(){
 
         Intent intent = getIntent();
@@ -286,14 +229,8 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
         }
-
         //конец
-
-
     }
-
-
-
 }
 
 

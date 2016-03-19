@@ -70,10 +70,11 @@
                             <LinearLayout
                                 android:orientation="horizontal"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:background="@drawable/category_set"
                                 android:layout_weight="1"
-                                android:id="@+id/lvl1">
+                                android:id="@+id/lvl1"
+                                android:layout_marginTop="10dp">
 
                                 <TextView
                                     android:layout_width="fill_parent"
@@ -81,19 +82,20 @@
                                     android:textAppearance="?android:attr/textAppearanceMedium"
                                     android:text="Низкая"
                                     android:id="@+id/cate0"
-                                    android:layout_gravity="center_horizontal"
+                                    android:layout_gravity="center_vertical"
                                     android:layout_marginTop="10dp"
                                     android:textSize="35dp"
                                     android:layout_weight="5"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:textColor="#c3fcff" />
+                                    android:textColor="#c3fcff"
+                                    android:layout_marginBottom="10dp"
+                                    android:gravity="center" />
 
                             </LinearLayout>
 
                             <LinearLayout
                                 android:orientation="horizontal"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:background="@drawable/category_set"
                                 android:layout_weight="1"
                                 android:id="@+id/lvl2">
@@ -104,19 +106,20 @@
                                     android:textAppearance="?android:attr/textAppearanceMedium"
                                     android:text="Средняя"
                                     android:id="@+id/cate1"
-                                    android:layout_gravity="center_horizontal"
+                                    android:layout_gravity="center_vertical"
                                     android:layout_marginTop="10dp"
                                     android:textSize="35dp"
                                     android:layout_weight="5"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:textColor="#c3fcff" />
+                                    android:textColor="#c3fcff"
+                                    android:layout_marginBottom="10dp"
+                                    android:gravity="center" />
 
                             </LinearLayout>
 
                             <LinearLayout
                                 android:orientation="horizontal"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:background="@drawable/category_set"
                                 android:layout_weight="1"
                                 android:id="@+id/lvl3">
@@ -127,19 +130,20 @@
                                     android:textAppearance="?android:attr/textAppearanceMedium"
                                     android:text="Выше среднего"
                                     android:id="@+id/cate2"
-                                    android:layout_gravity="center_horizontal"
+                                    android:layout_gravity="center_vertical"
                                     android:layout_marginTop="10dp"
                                     android:textSize="35dp"
                                     android:layout_weight="5"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:textColor="#c3fcff" />
+                                    android:textColor="#c3fcff"
+                                    android:layout_marginBottom="10dp"
+                                    android:gravity="center" />
 
                             </LinearLayout>
 
                             <LinearLayout
                                 android:orientation="horizontal"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:background="@drawable/category_set"
                                 android:layout_weight="1"
                                 android:id="@+id/lvl4">
@@ -150,12 +154,13 @@
                                     android:textAppearance="?android:attr/textAppearanceMedium"
                                     android:text="Сложная"
                                     android:id="@+id/cate3"
-                                    android:layout_gravity="center_horizontal"
+                                    android:layout_gravity="center_vertical"
                                     android:layout_marginTop="10dp"
                                     android:textSize="35dp"
                                     android:layout_weight="5"
-                                    android:gravity="center_vertical|center_horizontal"
-                                    android:textColor="#c3fcff" />
+                                    android:textColor="#c3fcff"
+                                    android:layout_marginBottom="10dp"
+                                    android:gravity="center" />
 
                             </LinearLayout>
 
