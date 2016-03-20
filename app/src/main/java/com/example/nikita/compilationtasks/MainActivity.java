@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     //это потомучто мы любим жарить дерьмо
     int page = 1;//собственно объяснять не буду
     //это кароче я хз как назыается,но мы попрежнему любим жарить говно!!1жькдрзхк
-
     //продолжаем тему "база данных для слабаков"
 
    //говно необходимо прожаривать со всех сторон а nullPointerExpection подвигает людей к этому
@@ -62,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
         int type = intent.getIntExtra("type", 0);
         show();
         //слушатели
+
+
         secondbutton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else  {
                     secondbutton.setBackgroundResource(R.drawable.buttonpressed2);
+
                     if (page < 5){
                         page++;                                                                                             //ЭТО ДЛЯ ДЕМОНСТРАЦИИ
                     }
@@ -230,6 +232,19 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
         //конец
+
+    }
+    public boolean way(MotionEvent event1 , MotionEvent event2) {
+        float sx = event1.getX();
+        float ex = event2.getX();
+        if (event1.getAction() == MotionEvent.ACTION_DOWN) {
+            if (sx - ex == 100) {
+                return true;
+            } else if (sx - ex == -100) {
+                return false;
+            }
+        }
+        return false;
     }
 }
 
