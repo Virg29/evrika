@@ -10,6 +10,7 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -39,12 +40,12 @@ public class MainActivity extends Activity{
             public void onSwipeRight() {
                 if (page < 5){
                 page++;
-                show();}
+                show("left");}
             }
             public void onSwipeLeft() {
                 if (page > 1) {
                 page--;
-                show();}
+                show("right");}
             }
 
         });
@@ -73,7 +74,7 @@ public class MainActivity extends Activity{
         //вот что сверху
         Intent intent = getIntent();
         int type = intent.getIntExtra("type", 0);
-        show();
+        show("left");
         //слушатели
         secondbutton.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -113,32 +114,56 @@ public class MainActivity extends Activity{
             }
         });
     }
-    public void show(){
+    private TranslateAnimation anim;
+    private TranslateAnimation mainanim;
 
+    public void show(String forward){
+        if (forward == "left"){
+            anim = new TranslateAnimation(-600, 1f, 1f, 1f);
+        }
+        else {
+            anim  = new TranslateAnimation(600, 1f, 1f, 1f);
+        }
+
+        anim.setDuration(250);
         Intent intent = getIntent();
         int type = intent.getIntExtra("type", 0);
         TextView textView5 = (TextView)findViewById(R.id.question);
+        if (forward == "left"){
+            mainanim  = new TranslateAnimation(1f, -600, 1f, 1f);
+        }
+        else {
+            mainanim = new TranslateAnimation(1f, 600, 1f, 1f);
+        }
+        mainanim.setDuration(250);
+        textView5.startAnimation(mainanim);
+
         switch (type){
             case(1):
                 switch (page){
                     case(1):
                         textView5.setText(R.string.lvl1_coplition1);
+                        textView5.startAnimation(anim);
                         otvet = bcate[0] ;
                         break;
                     case(2):
                         textView5.setText(R.string.lvl1_coplition2);
+                        textView5.startAnimation(anim);
                         otvet = bcate[1];
                         break;
                     case(3):
                         textView5.setText(R.string.lvl1_coplition3);
+                        textView5.startAnimation(anim);
                         otvet = bcate[2];
                         break;
                     case(4):
                         textView5.setText(R.string.lvl1_coplition4);
+                        textView5.startAnimation(anim);
                         otvet = bcate[3];
                         break;
                     case(5):
                         textView5.setText(R.string.lvl1_coplition5);
+                        textView5.startAnimation(anim);
                         otvet = bcate[4];
                         break;
                 }
