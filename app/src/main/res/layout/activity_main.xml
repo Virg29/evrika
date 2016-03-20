@@ -8,12 +8,15 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.nikita.compilationtasks.MainActivity"
-    android:background="#e8fbff">
+    android:background="#e8fbff"
+    android:id="@+id/main">
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_gravity="center_horizontal"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id="@+id/mainlay">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -78,11 +81,12 @@
                 android:layout_margin="10dp"
                 android:background="#138d98"
                 android:id="@+id/quest_cloud">
+
                 <ScrollView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:id="@+id/scrollView"
-                    android:layout_weight="0">
+                    android:layout_weight="1">
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
@@ -90,10 +94,10 @@
                     android:id="@+id/question"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
-                    android:text="@string/coplition"
                     android:textColor="#c3fcff"
                     android:textSize="17dp" />
                 </ScrollView>
+
             </LinearLayout>
 
 
@@ -124,8 +128,7 @@
                 android:background="@drawable/answer"
                 android:clickable="true"
                 android:id="@+id/clickbutton"
-                android:longClickable="false"
-                android:onClick="OnClick">
+                android:longClickable="false">
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -172,6 +175,7 @@
         </LinearLayout>
 
 </LinearLayout>
+
 
 
 </RelativeLayout>
