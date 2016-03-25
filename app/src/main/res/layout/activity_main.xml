@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
@@ -117,7 +121,7 @@
             android:layout_below="@+id/text_question"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:background="@drawable/el_button">
+            android:background="@drawable/el_button2">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -125,10 +129,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:nestedScrollingEnabled="false"
-                android:background="@drawable/answer"
+                android:background="@drawable/fbuttonitem"
                 android:clickable="true"
                 android:id="@+id/clickbutton"
-                android:longClickable="false">
+                android:longClickable="false"
+                android:onClick="ListenerAnswer1">
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -152,10 +157,11 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:nestedScrollingEnabled="false"
-                android:background="@drawable/button"
+                android:background="@drawable/sbuttonitem"
                 android:clickable="true"
                 android:id="@+id/clickbutton2"
-                android:longClickable="false">
+                android:longClickable="false"
+                android:onClick="ListenerAnswer2">
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -175,7 +181,112 @@
         </LinearLayout>
 
 </LinearLayout>
-
-
-
 </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/answerlay"
+        android:id="@+id/answerlayout"
+        android:visibility="invisible"
+        android:clickable="true"
+        android:onClick="close">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="50dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/el_button"
+                android:layout_marginBottom="5dp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="10dp"
+                    android:background="#138d98">
+
+                    <ScrollView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:id="@+id/scrollView3"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp">
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:id="@+id/answeronquest"
+                            android:textColor="#c3fcff"
+                            android:textSize="17dp" />
+                    </ScrollView>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="2"
+                android:background="@drawable/el_button2"
+                android:layout_marginTop="5dp">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/fbuttonitem"
+                    android:clickable="true">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:text="Правильно!"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:layout_margin="10dp"
+                        android:textStyle="bold"
+                        android:textColor="#c3fcff"
+                        android:textSize="23dp"
+                        android:textIsSelectable="false"
+                        android:id="@+id/submitans" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:background="@drawable/sbuttonitem">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:text="Не правильно!"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:layout_margin="10dp"
+                        android:textStyle="bold"
+                        android:textColor="#c3fcff"
+                        android:textSize="23dp"
+                        android:textIsSelectable="false"
+                        android:id="@+id/cancelans" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>
