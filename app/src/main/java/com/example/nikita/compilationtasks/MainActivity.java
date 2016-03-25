@@ -17,7 +17,6 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-// Я пожалуй скоментирую этот код
 public class MainActivity extends Activity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
