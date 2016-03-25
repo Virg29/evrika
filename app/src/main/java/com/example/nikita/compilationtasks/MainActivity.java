@@ -17,44 +17,17 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 public class MainActivity extends Activity{
-    //это потомучто мы любим жарить дерьмо
-    public static int page = 1;//собственно объяснять не буду
-    //это кароче я хз как назыается,но мы попрежнему любим жарить говно!!1жькдрзхк
-
-    //продолжаем тему "база данных для слабаков"
-
-    //говно необходимо прожаривать со всех сторон а nullPointerExpection подвигает людей к этому
-
-    int[] bcate = new int[]{R.string.otvet1_1, R.string.otvet1_2, R.string.otvet1_3, R.string.otvet1_4, R.string.otvet1_5, R.string.otvet2_1, R.string.otvet2_2, R.string.otvet2_3, R.string.otvet2_4, R.string.otvet2_5, R.string.otvet3_1, R.string.otvet3_2, R.string.otvet3_3, R.string.otvet3_4, R.string.otvet3_5, R.string.otvet4_1, R.string.otvet4_2, R.string.otvet4_3, R.string.otvet4_4, R.string.otvet4_5};
-    int otvet = bcate[0];
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ViewGroup main = (ViewGroup)findViewById(R.id.scrollView);
-        main.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this) {
-            TextView textView5 = (TextView)findViewById(R.id.question);
-            public void onSwipeRight() {
-                if (page < 5){
-                page++;
-                show("left");}
-            }
-            public void onSwipeLeft() {
-                if (page > 1) {
-                page--;
-                show("right");}
-            }
-
-        });
         // Определение нужных шрифтов
         Typeface Bebas = Typeface.createFromAsset(getAssets(), "fonts/Bebas.ttf");
         Typeface PTSans = Typeface.createFromAsset(getAssets(), "fonts/PTSansRegular.ttf");
-        // Задача их для нужных элементов
-        Integer[] BebasMass = new Integer[]{R.id.precategory, R.id.category, R.id.SecondButtonAns, R.id.FirstButtonAns};
-        Integer[] PTSansMass = new Integer[]{R.id.question};
+        // Задача их для элементов
+        Integer[] BebasMass = new Integer[]{R.id.precategory, R.id.category, R.id.SecondButtonAns, R.id.FirstButtonAns, R.id.submitans, R.id.cancelans};
+        Integer[] PTSansMass = new Integer[]{R.id.question, R.id.answeronquest};
         for (Integer i = 0; i < BebasMass.length; i++) {
             TextView textView = (TextView) findViewById(BebasMass[i]);
             textView.setTypeface(Bebas);
@@ -64,70 +37,46 @@ public class MainActivity extends Activity{
             TextView textView = (TextView) findViewById(PTSansMass[i]);
             textView.setTypeface(PTSans);
         }
-        // Изменение цвета/Или другие действия по нажатию кнопки
-        //Инициализация переменных
-        //кнопки
-        LinearLayout firstbutton = (LinearLayout) findViewById(R.id.clickbutton);
-        LinearLayout secondbutton = (LinearLayout) findViewById(R.id.clickbutton2);
-        //потом убрать
-        LinearLayout thirstbutton = (LinearLayout) findViewById(R.id.namequetion);
-        //вот что сверху
         Intent intent = getIntent();
         int type = intent.getIntExtra("type", 0);
         show("left");
-        //слушатели
-        secondbutton.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                LinearLayout secondbutton = (LinearLayout) findViewById(R.id.clickbutton2);
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    secondbutton.setBackgroundResource(R.drawable.button);
-                } else {
-                    secondbutton.setBackgroundResource(R.drawable.buttonpressed2);
-                }
-                return false;
-            }
+        };
 
-            ;
-        });
-        firstbutton.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                LinearLayout firstbutton = (LinearLayout) findViewById(R.id.clickbutton);
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    firstbutton.setBackgroundResource(R.drawable.button);
-                } else {
-                    firstbutton.setBackgroundResource(R.drawable.buttonpressed2);
-                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                    builder.setTitle("А вот и ответ");
-                    builder.setCancelable(false);
-                    builder.setMessage(otvet);
-                    builder.setNegativeButton("Ок!", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-                    AlertDialog alert = builder.create();
-                    alert.show();
-                }
-                return false;
-            }
-        });
-    }
     private TranslateAnimation anim;
     private TranslateAnimation mainanim;
+    public static int page = 1;//Переменная, которая отвечаеь за активный текст(если page==1: То будет выбран соответствующий текст из словаря strings)
+    int[] bcate = new int[]{R.string.otvet1_1, R.string.otvet1_2, R.string.otvet1_3, R.string.otvet1_4, R.string.otvet1_5, R.string.otvet2_1, R.string.otvet2_2, R.string.otvet2_3, R.string.otvet2_4, R.string.otvet2_5, R.string.otvet3_1, R.string.otvet3_2, R.string.otvet3_3, R.string.otvet3_4, R.string.otvet3_5, R.string.otvet4_1, R.string.otvet4_2, R.string.otvet4_3, R.string.otvet4_4, R.string.otvet4_5};// Массив ответов к вопросам из Strings
+    int otvet = bcate[0];//Изначальный выбор ответа к вопросу
 
     public void show(String forward){
         if (forward == "left"){
             anim = new TranslateAnimation(-600, 1f, 1f, 1f);
-        }
-        else {
+        } else {
             anim  = new TranslateAnimation(600, 1f, 1f, 1f);
         }
 
         anim.setDuration(250);
         Intent intent = getIntent();
         int type = intent.getIntExtra("type", 0);
+
+
+
+        //Кстати, в данном случае, Данила решил сделать свой анолог Дата Бейзу, поэтому дальше идёт трудный и не понятный код
+        ViewGroup main = (ViewGroup)findViewById(R.id.scrollView);
+        main.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this) {
+            TextView textView5 = (TextView)findViewById(R.id.question);
+            public void onSwipeRight() {
+                if (page < 5){
+                    page++;
+                    show("left");}
+            }
+            public void onSwipeLeft() {
+                if (page > 1) {
+                    page--;
+                    show("right");}
+            }
+
+        });
         TextView textView5 = (TextView)findViewById(R.id.question);
         if (forward == "left"){
             mainanim  = new TranslateAnimation(1f, -600, 1f, 1f);
@@ -137,7 +86,17 @@ public class MainActivity extends Activity{
         }
         mainanim.setDuration(250);
         textView5.startAnimation(mainanim);
+        //Функция которую писал не я, но работает она пло... Хотя нет. Она - работает! Мы должны радоваться
+        // Краткий обзор:
+        // Я называю это деревом из свитчей (Рабочее название - Свечи), разберу по уровням.
 
+        // Уровень "один":
+        // Определяется уровень сложности (Easy - 1, Sredne - 2, etc.)
+
+        // Уровень "Два":
+        // Эта свеча отвечает за выбраный активный текст. При изменении переменной page, происходит перелистование
+
+        // Не пытайтесь это читать, это НЕЧИТАБЕЛЬНО
         switch (type){
             case(1):
                 switch (page){
@@ -245,17 +204,30 @@ public class MainActivity extends Activity{
 
                 break;
         }
-        //конец
-    }
-    private GestureDetector mGesture;
-    public boolean onScroll(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY){
-        final int SWIPE_MIN_DISTANCE = 120;
-        final int SWIPE_MAX_OFF_PATH = 250;
-        final int SWIPE_THRESHOLD_VELOCITY = 200;
-        return true;
+
+    }//конец
+
+    public void ListenerAnswer1(View v) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("А вот и ответ");
+        builder.setCancelable(false);
+        builder.setMessage("Это ищо не работает)000))00))0");
+        builder.setNegativeButton("Ок!", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
     };
+    public void ListenerAnswer2 (View v){
+        RelativeLayout b = (RelativeLayout)findViewById(R.id.answerlayout);
+        b.setVisibility(View.VISIBLE);
+        TextView text = (TextView)findViewById(R.id.answeronquest);
+        text.setText(otvet);
+    }
+    public void close (View v){
+        RelativeLayout b = (RelativeLayout)findViewById(R.id.answerlayout);
+        b.setVisibility(View.INVISIBLE);
+    }
 };
-
-
-
-
