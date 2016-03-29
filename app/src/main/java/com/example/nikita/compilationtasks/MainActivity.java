@@ -6,28 +6,26 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class MainActivity extends Activity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         // Определение нужных шрифтов
         Typeface Bebas = Typeface.createFromAsset(getAssets(), "fonts/Bebas.ttf");
         Typeface PTSans = Typeface.createFromAsset(getAssets(), "fonts/PTSansRegular.ttf");
         // Задача их для элементов
         Integer[] BebasMass = new Integer[]{R.id.precategory, R.id.category, R.id.SecondButtonAns, R.id.FirstButtonAns, R.id.submitans, R.id.cancelans};
-        Integer[] PTSansMass = new Integer[]{R.id.question, R.id.answeronquest};
+        Integer[] PTSansMass = new Integer[]{R.id.tiponquest, R.id.question, R.id.answeronquest};
         for (Integer i = 0; i < BebasMass.length; i++) {
             TextView textView = (TextView) findViewById(BebasMass[i]);
             textView.setTypeface(Bebas);
@@ -40,191 +38,107 @@ public class MainActivity extends Activity{
         Intent intent = getIntent();
         int type = intent.getIntExtra("type", 0);
         show("left");
-        };
+        setQandA("right");
 
-    private TranslateAnimation anim;
+    };
+    public String string2;
     private TranslateAnimation mainanim;
     public static int page = 1;//Переменная, которая отвечаеь за активный текст(если page==1: То будет выбран соответствующий текст из словаря strings)
-    int[] bcate = new int[]{R.string.otvet1_1, R.string.otvet1_2, R.string.otvet1_3, R.string.otvet1_4, R.string.otvet1_5, R.string.otvet2_1, R.string.otvet2_2, R.string.otvet2_3, R.string.otvet2_4, R.string.otvet2_5, R.string.otvet3_1, R.string.otvet3_2, R.string.otvet3_3, R.string.otvet3_4, R.string.otvet3_5, R.string.otvet4_1, R.string.otvet4_2, R.string.otvet4_3, R.string.otvet4_4, R.string.otvet4_5};// Массив ответов к вопросам из Strings
-    int otvet = bcate[0];//Изначальный выбор ответа к вопросу
+    public String variable; // Потом убери
+
 
     public void show(String forward){
-        if (forward == "left"){
-            anim = new TranslateAnimation(-600, 1f, 1f, 1f);
-        } else {
-            anim  = new TranslateAnimation(600, 1f, 1f, 1f);
-        }
 
-        anim.setDuration(250);
-        Intent intent = getIntent();
-        int type = intent.getIntExtra("type", 0);
-
-
-
-        //Кстати, в данном случае, Данила решил сделать свой анолог Дата Бейзу, поэтому дальше идёт трудный и не понятный код
         ViewGroup main = (ViewGroup)findViewById(R.id.scrollView);
         main.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this) {
-            TextView textView5 = (TextView)findViewById(R.id.question);
+            TextView textView5 = (TextView) findViewById(R.id.question);
+
             public void onSwipeRight() {
-                if (page < 5){
+                if (page < 5) {
                     page++;
-                    show("left");}
+                    show("left");
+                    setQandA("left");
+                }
             }
+
             public void onSwipeLeft() {
                 if (page > 1) {
                     page--;
-                    show("right");}
+                    show("right");
+                    setQandA("right");
+                }
             }
 
         });
-        TextView textView5 = (TextView)findViewById(R.id.question);
+
+    }
+
+
+    public void setQandA(String forward){
+        Intent intent = getIntent();
+        int type = intent.getIntExtra("type", 0);
+        string2 = getString(R.string.jsonslovar);
+        String tip;                                    //там потом с переменными пошаманить прийдеться куда их пехать
+        String question = null;                               //а так это зарезервированные переменные которые ниже заполняются
+        String params = string2;      //присваиваем словарь
+        JSONArray jsonArray = null;                     //инициализация массива
+        tip = null;
+        String answer = null;
+        try{ //без трайа не работает
+            JSONObject jsonP = new JSONObject(params);//парсинг
+            switch (type){
+                case 1:
+                    jsonArray = jsonP.optJSONArray("lvl1");//тут происходит разбиение на уровн
+                    break;
+                case 2:
+                    jsonArray = jsonP.optJSONArray("lvl2");
+                    break;
+                case 3:
+                    jsonArray = jsonP.optJSONArray("lvl3");
+                    break;
+                case 4:
+                    jsonArray = jsonP.optJSONArray("lvl4");
+                    break;
+            }
+            JSONObject jsonObject = jsonArray.getJSONObject(page - 1);//разбиваем массив на объекты
+            tip = jsonObject.optString("tip").toString();//вот присвоение
+            question = jsonObject.optString("question").toString();//и это
+            answer = jsonObject.optString("answer").toString();
+
+        }catch (org.json.JSONException error){
+            error.printStackTrace();
+        }
+        TextView mainquestion = (TextView)findViewById(R.id.question);
+        mainquestion.setText(question);
+        TextView mainanswer = (TextView)findViewById(R.id.answeronquest);
+        mainanswer.setText(answer);
+        TextView maintip = (TextView)findViewById(R.id.tiponquest);
+        maintip.setText(tip);
         if (forward == "left"){
-            mainanim  = new TranslateAnimation(1f, -600, 1f, 1f);
+            mainanim  = new TranslateAnimation(-600, 1f, 1f, 1f);
         }
         else {
-            mainanim = new TranslateAnimation(1f, 600, 1f, 1f);
+            mainanim = new TranslateAnimation(600, 1f, 1f, 1f);
         }
+
         mainanim.setDuration(250);
-        textView5.startAnimation(mainanim);
-        //Функция которую писал не я, но работает она пло... Хотя нет. Она - работает! Мы должны радоваться
-        // Краткий обзор:
-        // Я называю это деревом из свитчей (Рабочее название - Свечи), разберу по уровням.
+        mainquestion.startAnimation(mainanim);
+    }
 
-        // Уровень "один":
-        // Определяется уровень сложности (Easy - 1, Sredne - 2, etc.)
 
-        // Уровень "Два":
-        // Эта свеча отвечает за выбраный активный текст. При изменении переменной page, происходит перелистование
 
-        // Не пытайтесь это читать, это НЕЧИТАБЕЛЬНО
-        switch (type){
-            case(1):
-                switch (page){
-                    case(1):
-                        textView5.setText(R.string.lvl1_coplition1);
-                        textView5.startAnimation(anim);
-                        otvet = bcate[0] ;
-                        break;
-                    case(2):
-                        textView5.setText(R.string.lvl1_coplition2);
-                        textView5.startAnimation(anim);
-                        otvet = bcate[1];
-                        break;
-                    case(3):
-                        textView5.setText(R.string.lvl1_coplition3);
-                        textView5.startAnimation(anim);
-                        otvet = bcate[2];
-                        break;
-                    case(4):
-                        textView5.setText(R.string.lvl1_coplition4);
-                        textView5.startAnimation(anim);
-                        otvet = bcate[3];
-                        break;
-                    case(5):
-                        textView5.setText(R.string.lvl1_coplition5);
-                        textView5.startAnimation(anim);
-                        otvet = bcate[4];
-                        break;
-                }
-                break;
-            case(2):
-                switch (page){
-                    case(1):
-                        textView5.setText(R.string.lvl2_coplition1);
-                        otvet = bcate[5];
-                        break;
-                    case(2):
-                        textView5.setText(R.string.lvl2_coplition2);
-                        otvet = bcate[6];
-                        break;
-                    case(3):
-                        textView5.setText(R.string.lvl2_coplition3);
-                        otvet = bcate[7];
-                        break;
-                    case(4):
-                        textView5.setText(R.string.lvl2_coplition4);
-                        otvet = bcate[8];
-                        break;
-                    case(5):
-                        textView5.setText(R.string.lvl2_coplition5);
-                        otvet = bcate[9];
-                        break;
-                }
-                break;
-
-            case(3):
-                switch (page){
-                    case(1):
-                        textView5.setText(R.string.lvl3_coplition1);
-                        otvet = bcate[10];
-                        break;
-                    case(2):
-                        textView5.setText(R.string.lvl3_coplition2);
-                        otvet = bcate[11];
-                        break;
-                    case(3):
-                        textView5.setText(R.string.lvl3_coplition3);
-                        otvet = bcate[12];
-                        break;
-                    case(4):
-                        textView5.setText(R.string.lvl3_coplition4);
-                        otvet = bcate[13];
-                        break;
-                    case(5):
-                        textView5.setText(R.string.lvl3_coplition5);
-                        otvet = bcate[14];
-                        break;
-                }
-
-                break;
-
-            case(4):
-                switch (page){
-                    case(1):
-                        textView5.setText(R.string.lvl4_coplition1);
-                        otvet = bcate[15];
-                        break;
-                    case(2):
-                        textView5.setText(R.string.lvl4_coplition2);
-                        otvet = bcate[16];
-                        break;
-                    case(3):
-                        textView5.setText(R.string.lvl4_coplition3);
-                        otvet = bcate[17];
-                        break;
-                    case(4):
-                        textView5.setText(R.string.lvl4_coplition4);
-                        otvet = bcate[18];
-                        break;
-                    case(5):
-                        textView5.setText(R.string.lvl4_coplition5);
-                        otvet = bcate[19];
-                        break;
-                }
-
-                break;
-        }
-
-    }//конец
 
     public void ListenerAnswer1(View v) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setTitle("А вот и ответ");
-        builder.setCancelable(false);
-        builder.setMessage("Это ищо не работает)000))00))0");
-        builder.setNegativeButton("Ок!", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                dialog.cancel();
-            }
-        });
-        AlertDialog alert = builder.create();
-        alert.show();
+        RelativeLayout b = (RelativeLayout)findViewById(R.id.tiplayout);
+        b.setVisibility(View.VISIBLE);
     };
+    public void closetip(View v){
+        RelativeLayout b = (RelativeLayout)findViewById(R.id.tiplayout);
+        b.setVisibility(View.INVISIBLE);
+    }
     public void ListenerAnswer2 (View v){
         RelativeLayout b = (RelativeLayout)findViewById(R.id.answerlayout);
         b.setVisibility(View.VISIBLE);
-        TextView text = (TextView)findViewById(R.id.answeronquest);
-        text.setText(otvet);
     }
     public void close (View v){
         RelativeLayout b = (RelativeLayout)findViewById(R.id.answerlayout);

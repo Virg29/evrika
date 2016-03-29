@@ -131,7 +131,7 @@
                 android:nestedScrollingEnabled="false"
                 android:background="@drawable/fbuttonitem"
                 android:clickable="true"
-                android:id="@+id/clickbutton"
+                android:id="@+id/tipbutton"
                 android:longClickable="false"
                 android:onClick="ListenerAnswer1">
 
@@ -187,7 +187,7 @@
         android:layout_height="fill_parent"
         android:background="@drawable/answerlay"
         android:id="@+id/answerlayout"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:clickable="true"
         android:onClick="close">
 
@@ -200,7 +200,7 @@
             android:layout_marginTop="50dp"
             android:layout_marginBottom="50dp">
 
-            <LinearLayout
+           <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
@@ -289,4 +289,50 @@
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/answerlay"
+        android:id="@+id/tiplayout"
+        android:visibility="gone"
+        android:clickable="true"
+        android:onClick="closetip">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/el_button"
+            android:layout_marginBottom="100dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="10dp"
+                android:background="#138d98">
+
+                <ScrollView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/scrollView4"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:id="@+id/tiponquest"
+                        android:textColor="#c3fcff"
+                        android:textSize="17dp" />
+                </ScrollView>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
 </FrameLayout>
