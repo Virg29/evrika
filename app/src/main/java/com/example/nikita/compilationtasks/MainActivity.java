@@ -1,9 +1,8 @@
 package com.example.nikita.compilationtasks;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
@@ -14,17 +13,27 @@ import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 public class MainActivity extends Activity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AssetManager assetManager = getAssets();
+        try {
+            InputStream ims = assetManager.open("database/db.json");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
         // Определение нужных шрифтов
         Typeface Bebas = Typeface.createFromAsset(getAssets(), "fonts/Bebas.ttf");
         Typeface PTSans = Typeface.createFromAsset(getAssets(), "fonts/PTSansRegular.ttf");
         // Задача их для элементов
-        Integer[] BebasMass = new Integer[]{R.id.precategory, R.id.category, R.id.SecondButtonAns, R.id.FirstButtonAns, R.id.submitans, R.id.cancelans};
+        Integer[] BebasMass = new Integer[]{R.id.cloudText, R.id.precategory, R.id.category, R.id.SecondButtonAns, R.id.FirstButtonAns, R.id.submitans, R.id.cancelans};
         Integer[] PTSansMass = new Integer[]{R.id.tiponquest, R.id.question, R.id.answeronquest};
         for (Integer i = 0; i < BebasMass.length; i++) {
             TextView textView = (TextView) findViewById(BebasMass[i]);
@@ -55,7 +64,7 @@ public class MainActivity extends Activity{
 
             public void onSwipeRight() {
                 if (page < 5) {
-                    page--;
+                    page++;
                     show("left");
                     setQandA("left");
                 }
@@ -63,7 +72,7 @@ public class MainActivity extends Activity{
 
             public void onSwipeLeft() {
                 if (page > 1) {
-                    page++;
+                    page--;
                     show("right");
                     setQandA("right");
                 }
@@ -134,14 +143,42 @@ public class MainActivity extends Activity{
     };
     public void closetip(View v){
         RelativeLayout b = (RelativeLayout)findViewById(R.id.tiplayout);
-        b.setVisibility(View.INVISIBLE);
+        b.setVisibility(View.GONE);
     }
     public void ListenerAnswer2 (View v){
         RelativeLayout b = (RelativeLayout)findViewById(R.id.answerlayout);
         b.setVisibility(View.VISIBLE);
     }
-    public void close (View v){
+
+    public void trueans(View v){
         RelativeLayout b = (RelativeLayout)findViewById(R.id.answerlayout);
-        b.setVisibility(View.INVISIBLE);
+        b.setVisibility(View.GONE);
+        RelativeLayout a = (RelativeLayout)findViewById(R.id.falselayout);
+        a.setVisibility(View.VISIBLE);
+        TextView text = (TextView)findViewById(R.id.cloudText);
+        text.setText("Молодец!");
+        page++;
+        show("left");
+        setQandA("right");
+
+    }
+    public void close(View v){
+        RelativeLayout b = (RelativeLayout)findViewById(R.id.answerlayout);
+        b.setVisibility(View.GONE);
+    }
+    public void closecloud (View v){
+        RelativeLayout a = (RelativeLayout)findViewById(R.id.falselayout);
+        a.setVisibility(View.GONE);
+    }
+    public void falseans(View v){
+        RelativeLayout b = (RelativeLayout)findViewById(R.id.answerlayout);
+        b.setVisibility(View.GONE);
+        TextView text = (TextView)findViewById(R.id.cloudText);
+        text.setText("В другой раз");
+        RelativeLayout a = (RelativeLayout)findViewById(R.id.falselayout);
+        a.setVisibility(View.VISIBLE);
+        page++;
+        show("left");
+        setQandA("right");
     }
 };
