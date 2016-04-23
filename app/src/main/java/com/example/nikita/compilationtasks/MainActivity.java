@@ -7,12 +7,14 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -151,15 +153,14 @@ public class MainActivity extends Activity{
     }
 
     public void trueans(View v){
-        RelativeLayout b = (RelativeLayout)findViewById(R.id.answerlayout);
-        b.setVisibility(View.GONE);
-        RelativeLayout a = (RelativeLayout)findViewById(R.id.falselayout);
-        a.setVisibility(View.VISIBLE);
         TextView text = (TextView)findViewById(R.id.cloudText);
         text.setText("Молодец!");
         page++;
         show("left");
         setQandA("right");
+        showtip();
+        RelativeLayout a = (RelativeLayout)findViewById(R.id.falselayout);
+        a.setVisibility(View.VISIBLE);
 
     }
     public void close(View v){
@@ -170,15 +171,27 @@ public class MainActivity extends Activity{
         RelativeLayout a = (RelativeLayout)findViewById(R.id.falselayout);
         a.setVisibility(View.GONE);
     }
+
+
+    public AlphaAnimation fadeout = new AlphaAnimation(1.0f, 0.0f);
+
+
     public void falseans(View v){
-        RelativeLayout b = (RelativeLayout)findViewById(R.id.answerlayout);
-        b.setVisibility(View.GONE);
         TextView text = (TextView)findViewById(R.id.cloudText);
         text.setText("В другой раз");
-        RelativeLayout a = (RelativeLayout)findViewById(R.id.falselayout);
-        a.setVisibility(View.VISIBLE);
         page++;
         show("left");
         setQandA("right");
+        showtip();
+        RelativeLayout a = (RelativeLayout)findViewById(R.id.falselayout);
+        a.setVisibility(View.VISIBLE);
+    }
+    public void showtip(){
+        RelativeLayout b = (RelativeLayout)findViewById(R.id.answerlayout);
+        b.setVisibility(View.GONE);
+        RelativeLayout a = (RelativeLayout)findViewById(R.id.falselayout);
+        fadeout.setDuration(1000);
+        a.startAnimation(fadeout);
+        fadeout.setFillAfter(true);
     }
 };
