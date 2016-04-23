@@ -261,7 +261,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/fbuttonitem"
-                    android:clickable="true">
+                    android:clickable="false"
+                    android:visibility="visible">
 
                     <TextView
                         android:layout_width="fill_parent"
@@ -274,7 +275,9 @@
                         android:textColor="#c3fcff"
                         android:textSize="23dp"
                         android:textIsSelectable="false"
-                        android:id="@+id/submitans" />
+                        android:id="@+id/submitans"
+                        android:onClick="trueans"
+                        android:clickable="true" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -283,7 +286,8 @@
                     android:layout_height="match_parent"
                     android:clickable="true"
                     android:background="@drawable/sbuttonitem"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:onClick="falseans">
 
                     <TextView
                         android:layout_width="fill_parent"
@@ -344,6 +348,44 @@
                         android:textSize="17dp" />
                 </ScrollView>
             </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/answerlay"
+        android:id="@+id/falselayout"
+        android:visibility="gone"
+        android:clickable="true"
+        android:onClick="closecloud">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/cloud">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="В другой раз!"
+                    android:id="@+id/cloudText"
+                    android:gravity="center"
+                    android:textSize="45dp"
+                    android:paddingTop="50dp"
+                    android:paddingBottom="50dp"
+                    android:paddingLeft="50dp"
+                    android:paddingRight="50dp" />
+            </LinearLayout>
+
         </LinearLayout>
     </RelativeLayout>
 </FrameLayout>
