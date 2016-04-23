@@ -55,7 +55,7 @@ public class MainActivity extends Activity{
 
             public void onSwipeRight() {
                 if (page < 5) {
-                    page++;
+                    page--;
                     show("left");
                     setQandA("left");
                 }
@@ -63,7 +63,7 @@ public class MainActivity extends Activity{
 
             public void onSwipeLeft() {
                 if (page > 1) {
-                    page--;
+                    page++;
                     show("right");
                     setQandA("right");
                 }
