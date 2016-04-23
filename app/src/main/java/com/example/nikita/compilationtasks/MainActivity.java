@@ -65,7 +65,7 @@ public class MainActivity extends Activity{
             TextView textView5 = (TextView) findViewById(R.id.question);
 
             public void onSwipeRight() {
-                if (page < 5) {
+                if (page < 26) {
                     page++;
                     show("left");
                     setQandA("left");
@@ -179,6 +179,7 @@ public class MainActivity extends Activity{
     public void falseans(View v){
         TextView text = (TextView)findViewById(R.id.cloudText);
         text.setText("В другой раз");
+
         page++;
         show("left");
         setQandA("right");
