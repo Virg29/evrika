@@ -187,7 +187,9 @@
                             android:textStyle="bold"
                             android:textColor="#c3fcff"
                             android:textSize="23dp"
-                            android:textIsSelectable="false" />
+                            android:textIsSelectable="false"
+                            android:paddingRight="5dp"
+                            android:paddingLeft="5dp" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -357,20 +359,20 @@
         android:background="@drawable/answerlay"
         android:id="@+id/falselayout"
         android:visibility="gone"
-        android:clickable="true"
-        android:onClick="closecloud">
+        android:clickable="false">
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:gravity="center">
+            android:gravity="center_horizontal">
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/cloud">
+                android:background="@drawable/cloud"
+                android:layout_marginTop="20dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -378,12 +380,12 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="В другой раз!"
                     android:id="@+id/cloudText"
-                    android:gravity="center"
-                    android:textSize="45dp"
-                    android:paddingTop="50dp"
-                    android:paddingBottom="50dp"
+                    android:textSize="35dp"
+                    android:paddingTop="25dp"
+                    android:paddingBottom="25dp"
                     android:paddingLeft="50dp"
-                    android:paddingRight="50dp" />
+                    android:paddingRight="50dp"
+                    android:gravity="center" />
             </LinearLayout>
 
         </LinearLayout>
