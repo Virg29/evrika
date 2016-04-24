@@ -147,7 +147,8 @@
                     android:textStyle="bold"
                     android:textColor="#c3fcff"
                     android:textSize="23dp"
-                    android:textIsSelectable="false" />
+                    android:textIsSelectable="false"
+                    android:clickable="false" />
 
             </LinearLayout>
 

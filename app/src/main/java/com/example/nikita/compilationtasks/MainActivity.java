@@ -11,6 +11,8 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.TranslateAnimation;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import org.json.JSONArray;
@@ -48,8 +50,8 @@ public class MainActivity extends Activity{
         }
         Intent intent = getIntent();
         int type = intent.getIntExtra("type", 0);
-        show("left");
-        setQandA("right");
+        show();
+        setQandA("none");
 
     };
     public String string2;
@@ -58,16 +60,15 @@ public class MainActivity extends Activity{
     public String variable; // Потом убери
 
 
-    public void show(String forward){
+    public void show(){
 
         ViewGroup main = (ViewGroup)findViewById(R.id.scrollView);
         main.setOnTouchListener(new OnSwipeTouchListener(MainActivity.this) {
             TextView textView5 = (TextView) findViewById(R.id.question);
 
             public void onSwipeRight() {
-                if (page < 26) {
+                if (page < 20) {
                     page++;
-                    show("left");
                     setQandA("left");
                 }
             }
@@ -75,7 +76,6 @@ public class MainActivity extends Activity{
             public void onSwipeLeft() {
                 if (page > 1) {
                     page--;
-                    show("right");
                     setQandA("right");
                 }
             }
@@ -124,16 +124,31 @@ public class MainActivity extends Activity{
         TextView mainanswer = (TextView)findViewById(R.id.answeronquest);
         mainanswer.setText(answer);
         TextView maintip = (TextView)findViewById(R.id.tiponquest);
-        maintip.setText(tip);
-        if (forward == "left"){
-            mainanim  = new TranslateAnimation(-600, 1f, 1f, 1f);
+        LinearLayout buttonhint = (LinearLayout)findViewById(R.id.tipbutton);
+        if (tip.length()<4){
+            buttonhint.setClickable(false);
         }
-        else {
-            mainanim = new TranslateAnimation(600, 1f, 1f, 1f);
+        else{
+            buttonhint.setClickable(true);
+            maintip.setText(tip);
         }
 
-        mainanim.setDuration(250);
-        mainquestion.startAnimation(mainanim);
+        if (forward == "left"){
+            mainanim  = new TranslateAnimation(-600, 1f, 1f, 1f);
+            mainanim.setDuration(250);
+            mainquestion.startAnimation(mainanim);
+        }
+        else if (forward == "right")  {
+            mainanim = new TranslateAnimation(600, 1f, 1f, 1f);
+            mainanim.setDuration(250);
+            mainquestion.startAnimation(mainanim);
+        }
+        else{
+
+
+        }
+
+
     }
 
 
@@ -155,9 +170,15 @@ public class MainActivity extends Activity{
     public void trueans(View v){
         TextView text = (TextView)findViewById(R.id.cloudText);
         text.setText("Молодец!");
-        page++;
-        show("left");
-        setQandA("right");
+        if (page < 20){
+            page++;
+            show();
+            setQandA("right");
+        }
+        else{
+
+        }
+
         showtip();
         RelativeLayout a = (RelativeLayout)findViewById(R.id.falselayout);
         a.setVisibility(View.VISIBLE);
@@ -179,10 +200,15 @@ public class MainActivity extends Activity{
     public void falseans(View v){
         TextView text = (TextView)findViewById(R.id.cloudText);
         text.setText("В другой раз");
+        if (page < 20){
+            page++;
+            show();
+            setQandA("right");
+        }
+        else{
 
-        page++;
-        show("left");
-        setQandA("right");
+        }
+
         showtip();
         RelativeLayout a = (RelativeLayout)findViewById(R.id.falselayout);
         a.setVisibility(View.VISIBLE);
